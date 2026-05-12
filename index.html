@@ -71,14 +71,15 @@
         body.lang-ar .btn, body.lang-ar .donate-btn-modern { font-size: 0.9rem; }
         body.lang-ar .city-badge { font-size: 0.85rem; padding: 2px 10px; }
 
+        /* تعديل الهيدر العلوي بحيث لا يترك مساحات جانبية كبيرة */
         header {
             position: fixed; top: 0; width: 100%; z-index: 1000; height: 65px;
             background: rgba(10, 54, 34, 0.98); 
-            padding: 0 5%; display: flex; justify-content: space-between; align-items: center;
+            padding: 0 10px; display: flex; justify-content: space-between; align-items: center;
             color: var(--secondary); box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .header-brand { display: flex; align-items: center; gap: 10px; font-size: 1.1rem; font-weight: bold; white-space: nowrap; }
-        .header-actions { display: flex; align-items: center; gap: 15px; flex-wrap: nowrap; }
+        .header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; }
         .icon-btn { cursor: pointer; font-size: 20px; transition: var(--transition); }
         .icon-btn:hover { color: var(--white); }
 
@@ -152,7 +153,6 @@
         .prayer-time { font-size: 0.85rem; color: #666; }
         .prayer-card.next-prayer .prayer-time { color: #ddd; }
 
-        /* شريط الإحصائيات */
         .stats-bar { display: flex; justify-content: center; gap: 20px; padding: 15px; margin: -10px auto 20px auto; max-width: 600px; background: var(--white); border-radius: 12px; box-shadow: var(--shadow); flex-wrap: wrap; border: 1px solid rgba(10,54,34,0.1); }
         .stat-item { display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 120px; }
         .stat-item:not(:last-child) { border-right: 2px solid var(--light-bg); }[dir="rtl"] .stat-item:not(:last-child) { border-right: none; border-left: 2px solid var(--light-bg); }
@@ -166,12 +166,10 @@
         @keyframes popUpdate { 0% { transform: scale(1); } 50% { transform: scale(1.3); color: var(--success); } 100% { transform: scale(1); } }
         .pop-update { animation: popUpdate 0.4s ease-out forwards; display: inline-block; }
 
-        /* زر الجدول الشهري */
         .btn-monthly-wrapper { text-align: center; margin-bottom: 30px; }
         .btn-monthly { background: linear-gradient(135deg, var(--primary), #0c4a2e); color: var(--white); border: 1px solid var(--secondary); padding: 10px 25px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: transform 0.2s; font-family: inherit; }
         .btn-monthly:active { transform: scale(0.95); }
 
-        /* حاوية الجدول الشهري (Modal) */
         .timetable-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 2000; opacity: 0; transition: opacity 0.3s; }
         .timetable-backdrop.active { display: block; opacity: 1; }
 
@@ -184,7 +182,6 @@
         .timetable-footer { padding: 15px; background: var(--white); display: flex; gap: 10px; border-top: 1px solid #eee; }
         .timetable-footer .btn { flex: 1; justify-content: center; padding: 10px; font-size: 0.95rem; }
 
-        /* تصميم الجدول المكون من 6 أعمدة */
         .pray-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: center; background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .pray-table th { background: var(--primary); color: var(--secondary); padding: 10px 5px; position: sticky; top: 0; z-index: 10; font-weight: bold; border-bottom: 2px solid var(--secondary); }
         .pray-table td { padding: 8px 5px; border-bottom: 1px solid #eee; color: var(--text-dark); font-family: monospace; font-size: 0.9rem;}
@@ -205,7 +202,6 @@
         .gallery-caption { position: absolute; bottom: 0; left: 0; width: 100%; padding: 5px; background: rgba(0,0,0,0.7); color: var(--white); text-align: center; font-size: 0.8rem; opacity: 0; transition: opacity 0.2s;}
         .gallery-item:hover .gallery-caption { opacity: 1; }
 
-        /* متصفح الصور الداخلي (Lightbox) */
         .lightbox-overlay { display: none; position: fixed; z-index: 5000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
         .lightbox-overlay.active { display: flex; opacity: 1; }
         .lightbox-content { max-width: 90%; max-height: 85vh; border-radius: 8px; box-shadow: 0 4px 25px rgba(0,0,0,0.5); object-fit: contain; }
@@ -254,7 +250,8 @@
         .second-hand { width: 2px; height: 60px; background: #ff3b30; left: calc(50% - 1px); z-index: 4; }
         .center-dot { position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; background: var(--secondary); border-radius: 50%; transform: translate(-50%, -50%); z-index: 5; }
         .lux-date { font-size: 0.9rem; color: #e0e0e0; font-weight: 600; background: rgba(0,0,0,0.2); padding: 4px 10px; border-radius: 8px; }
-/* =========================================
+
+        /* =========================================
            TV Display Mode Styles (وضع شاشة العرض)
            ========================================= */
         .tv-mode-overlay {
@@ -291,23 +288,23 @@
             width: 28%; background: linear-gradient(to bottom, #004b87, #002b5e);
             display: flex; flex-direction: column; border-right: 3px solid #d4af37;
             box-shadow: 5px 0 15px rgba(0,0,0,0.5); z-index: 2;
-            padding-bottom: 0; /* تم إزالة المساحة السفلية لأن الشريط الإخباري أصبح مستقلاً */
+            padding-bottom: 5px; /* تقليل المساحة السفلية لضمان عدم تداخل العشاء مع الشريط */
             position: relative;
         }
-        
-/* صف الصلاة: الرمز أقصى اليسار وبجواره التفاصيل مباشرة */
+
+        /* صف الصلاة - ضبط التمدد لعدم اختفاء صلاة العشاء */
         .tv-prayer-row {
-            flex: 1; display: flex; flex-direction: row; align-items: center; 
-            padding: 0 15px 0 35px; border-bottom: 1px solid rgba(255,255,255,0.1); 
-            direction: ltr; justify-content: flex-start; gap: 20px;
+            flex: 1; min-height: 0; display: flex; flex-direction: row; align-items: center; 
+            padding: 0 15px 0 25px; border-bottom: 1px solid rgba(255,255,255,0.1); 
+            direction: ltr; justify-content: flex-start; gap: 15px;
         }
-        .tv-prayer-row.active { background: rgba(255, 255, 255, 0.1); border-left: 8px solid #d4af37; padding-left: 27px; border-right: none; }
-        .tv-prayer-icon { font-size: min(3.5vw, 4vh); color: #fff; }
+        .tv-prayer-row.active { background: rgba(255, 255, 255, 0.1); border-left: 8px solid #d4af37; padding-left: 17px; border-right: none; }
+        .tv-prayer-icon { font-size: min(3vw, 3.5vh); color: #fff; }
         .tv-prayer-details { display: flex; flex-direction: column; align-items: center; text-align: center; direction: rtl; }
         .tv-prayer-name { font-size: min(1.8vw, 2.5vh); font-weight: bold; color: #e0e0e0; margin-bottom: 2px; }
-        .tv-prayer-time { font-size: min(3.5vw, 4.5vh); font-weight: 900; color: #fff; line-height: 1; font-family: monospace; letter-spacing: 2px; direction: ltr; }
+        .tv-prayer-time { font-size: min(3.5vw, 3.5vh); font-weight: 900; color: #fff; line-height: 1; font-family: monospace; letter-spacing: 2px; direction: ltr; }
         .tv-prayer-iqama { font-size: min(1vw, 1.5vh); color: #fff; background: rgba(0,0,0,0.4); padding: 3px 10px; border-radius: 10px; display: inline-block; margin-top: 6px; }
-      
+
         /* المنطقة الرئيسية (الخلفية والساعة) - على اليمين بصرياً */
         .tv-main {
             width: 72%; position: relative;
@@ -320,12 +317,22 @@
         .tv-header {
             position: absolute; top: 0; left: 0; right: 0; padding: 30px 40px;
             display: flex; justify-content: space-between; align-items: flex-start; z-index: 3;
+            flex-direction: row; /* في وضع RTL يضع العنصر الأول أقصى اليمين */
         }
-        .tv-mosque-info { text-align: right; display: flex; align-items: center; gap: 15px; }
-        .tv-mosque-info h1 { font-size: 3vw; font-family: 'Amiri', serif; color: #d4af37; text-shadow: 2px 2px 4px #000; margin: 0; line-height: 1.2; }
+        .tv-mosque-info { 
+            display: flex; flex-direction: column; align-items: flex-start; /* اليمين في وضع RTL */
+            text-align: right; gap: 5px; 
+        }
+        .tv-mosque-logo { font-size: 3.5vw; color: #fff; text-shadow: 2px 2px 4px #000; margin-bottom: 5px;}
+        .tv-mosque-info h1 { font-size: 2.5vw; font-family: 'Amiri', serif; color: #d4af37; text-shadow: 2px 2px 4px #000; margin: 0; line-height: 1.2; }
         .tv-mosque-info p { font-size: 1.2vw; color: #fff; text-shadow: 1px 1px 2px #000; margin: 0; }
-        .tv-mosque-logo { font-size: 4vw; color: #fff; text-shadow: 2px 2px 4px #000; }
-        .tv-date-bar { background: rgba(0, 75, 135, 0.8); padding: 10px 25px; border-radius: 20px; font-size: 1.3vw; font-weight: bold; border: 1px solid #d4af37; box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 10px; }
+        
+        .tv-date-bar { 
+            background: rgba(0, 75, 135, 0.8); padding: 10px 25px; border-radius: 20px; 
+            font-size: min(1.2vw, 2vh); font-weight: bold; border: 1px solid #d4af37; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; 
+            gap: 10px; white-space: nowrap; /* إبقاء المستطيل سطراً واحداً دائماً */
+        }
 
         /* الساعة الأنالوج الزرقاء */
         .tv-clock-wrapper {
@@ -356,7 +363,7 @@
         .tv-clock-brand div { font-size: 1vw; font-weight: bold; letter-spacing: 2px; }
         .tv-clock-brand span { font-size: 0.7vw; }
 
-        /* منطقة العداد فوق الشريط الإخباري */
+        /* منطقة العداد فوق الشريط الإخباري تصغير حجم العداد */
         .tv-bottom-area {
             position: absolute; bottom: 25px; /* مرفوعة فوق الشريط الإخباري بشكل ثابت */
             left: 0; right: 0; z-index: 3;
@@ -364,8 +371,8 @@
         }
         .tv-countdown-pill {
             background: rgba(0, 75, 135, 0.9); border: 2px solid #fff; border-radius: 30px;
-            padding: 12px 35px; margin: 0 40px 0 0; display: flex; align-items: center; gap: 15px;
-            font-size: 2.2vw; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            padding: 8px 25px; margin: 0 40px 0 0; display: flex; align-items: center; gap: 15px;
+            font-size: clamp(1rem, 1.5vw, 2rem); font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
         .tv-countdown-pill i { color: #d4af37; }
 
@@ -394,7 +401,7 @@
     <!-- حاوية وضع شاشة العرض (TV Mode) -->
     <div id="tv-mode-overlay" class="tv-mode-overlay">
         <button class="tv-exit-btn" onclick="exitTvMode()"><i class="fas fa-times"></i> خروج من شاشة العرض</button>
-        
+
         <div class="tv-layout">
             <!-- الشريط الجانبي للمواقيت -->
             <div class="tv-sidebar" id="tv-prayers-container">
@@ -404,17 +411,16 @@
             <!-- المنطقة الرئيسية -->
             <div class="tv-main">
                 <div class="tv-main-overlay"></div>
-                
+
                 <div class="tv-header">
+                    <!-- اسم المسجد والرمز في أقصى اليمين -->
                     <div class="tv-mosque-info">
-                        <div style="text-align: right;">
-                            <h1>مسجد الرحمن</h1>
-                            <p>Perstorp skåne sverige 0730787641</p>
-                        </div>
                         <i class="fas fa-mosque tv-mosque-logo"></i>
+                        <h1>مسجد الرحمن</h1>
+                        <p>Perstorp skåne sverige</p>
                     </div>
+                    <!-- شريط التاريخ سطر واحد -->
                     <div class="tv-date-bar">
-                        <!-- درجة الحرارة -->
                         <span id="tv-weather-display"><i class="fas fa-spinner fa-spin"></i></span> 
                         <span style="color:#d4af37;">|</span> 
                         <span id="tv-date-display">--</span>
@@ -445,7 +451,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- الشريط الإخباري ممتد على كامل العرض بخلفية مقسومة لونين -->
         <div class="tv-ticker-wrapper">
             <marquee scrollamount="8" id="tv-ticker-text">مرحباً بكم في مسجد الرحمن - يرجى إغلاق الهواتف المحمولة أثناء الخطبة والصلاة - تقبل الله منا ومنكم صالح الأعمال</marquee>
@@ -476,7 +482,7 @@
             </div>
         </div>
     </header>
-   
+
     <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
     <div class="sidebar" id="sidebar">
@@ -489,10 +495,10 @@
             <a href="#prayers" onclick="toggleSidebar();"><i class="fas fa-clock"></i> <span id="menu-prayers">Bönetider</span></a>
             <a href="#activities" onclick="toggleSidebar();"><i class="fas fa-users"></i> <span id="menu-activities">Aktiviteter</span></a>
             <a href="#gallery" onclick="toggleSidebar();"><i class="fas fa-images"></i> <span id="menu-gallery">Galleri</span></a>
-            
+
             <!-- زر تفعيل شاشة العرض -->
             <a href="#" onclick="enterTvMode(); toggleSidebar();"><i class="fas fa-tv"></i> <span id="menu-tv">شاشة العرض (TV)</span></a>
-            
+
             <button id="btn-toggle-notif" onclick="openNotificationModal()"><i id="menu-notif-icon" class="fas fa-bell"></i> <span id="menu-notif-btn">Aktivera Notiser</span></button>
             <a href="admin.html"><i class="fas fa-cog"></i> <span id="menu-admin">Admin</span></a>
         </div>
@@ -977,7 +983,7 @@
             document.getElementById('nav-title').innerText = t.nav; document.getElementById('menu-title').innerText = t.menuTitle; document.getElementById('menu-home').innerText = t.home; document.getElementById('menu-prayers').innerText = t.prayers; document.getElementById('menu-activities').innerText = t.activities; document.getElementById('menu-gallery').innerText = t.gallery; document.getElementById('menu-admin').innerText = t.admin; document.getElementById('hero-title').innerText = t.heroTitle; document.getElementById('hero-subtitle').innerText = t.heroSub; document.getElementById('title-prayer').innerText = t.tPrayer; document.getElementById('title-activities').innerText = t.tAct; document.getElementById('title-donate').innerText = t.tDonate; document.getElementById('text-swish').innerText = t.tSwish; document.getElementById('btn-donate').innerHTML = t.btnDonate; document.getElementById('title-gallery').innerText = t.tGallery; document.getElementById('title-contact').innerText = t.tContact; document.getElementById('address-text').innerText = t.address; document.getElementById('notif-title-text').innerText = t.notifTitle;
 
             document.getElementById('label-total').innerText = t.lblTotal; document.getElementById('label-active').innerText = t.lblActive;
-            
+
             if(document.getElementById('menu-tv')) document.getElementById('menu-tv').innerText = t.tvMode;
 
             document.getElementById('text-btn-monthly').innerText = t.btnMonthly;
@@ -1074,7 +1080,7 @@
         /* =========================================
            TV Display Mode Logic (منطق شاشة العرض)
            ========================================= */
-           
+
         // دالة جلب درجة الحرارة لمدينة بيرستورب السويدية
         async function fetchTvWeather() {
             try {
@@ -1093,7 +1099,7 @@
             renderTvPrayers();
             setupTvClockFace();
             fetchTvWeather(); 
-            
+
             let elem = document.documentElement;
             if (elem.requestFullscreen) { elem.requestFullscreen(); }
             else if (elem.webkitRequestFullscreen) { elem.webkitRequestFullscreen(); }
@@ -1103,7 +1109,7 @@
         function exitTvMode() {
             document.getElementById('tv-mode-overlay').classList.remove('active');
             document.body.style.overflow = '';
-            
+
             if (document.exitFullscreen) { document.exitFullscreen(); }
             else if (document.webkitExitFullscreen) { document.webkitExitFullscreen(); }
             else if (document.msExitFullscreen) { document.msExitFullscreen(); }
@@ -1113,14 +1119,13 @@
             const container = document.getElementById('tv-prayers-container');
             const t = langData['ar']; 
             let html = '';
-            
+
             prayerTimes.forEach(p => {
                 let isActive = document.getElementById(`card-${p.id}`) && document.getElementById(`card-${p.id}`).classList.contains('next-prayer') ? 'active' : '';
-                
+
                 let iqamaText = p.type === 'no-prayer' ? `${t.pLabels.noP}` : `إقامة ${p.iqama}`;
                 let timeText = p.type === 'no-prayer' ? p.time : p.adhan;
-                
-                // الرمز أولاً (سيكون على اليمين) ثم التفاصيل (ستكون على اليسار)
+
                 html += `
                 <div class="tv-prayer-row ${isActive}" id="tv-row-${p.id}">
                     <i class="fas ${p.icon} tv-prayer-icon"></i>
@@ -1135,50 +1140,48 @@
         }
 
         function setupTvClockFace() {
-    const face = document.getElementById('tv-clock-face');
-    // مسح الأرقام والخطوط القديمة
-    document.querySelectorAll('.tv-clock-number, .tv-tick-container').forEach(e => e.remove());
+            const face = document.getElementById('tv-clock-face');
+            // مسح الأرقام والخطوط القديمة
+            document.querySelectorAll('.tv-clock-number, .tv-tick-container').forEach(e => e.remove());
 
-    const arabicNumbers =['١٢', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩', '١٠', '١١'];
+            const arabicNumbers =['١٢', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩', '١٠', '١١'];
 
-    // رسم الخطوط (الشرط البيضاء)
-    for (let i = 0; i < 60; i++) {
-        // إنشاء حاوية بطول الساعة بالكامل لضمان الدوران من المركز بدقة
-        const tickContainer = document.createElement('div');
-        tickContainer.className = 'tv-tick-container';
-        tickContainer.style.position = 'absolute';
-        tickContainer.style.width = i % 5 === 0 ? '4px' : '2px';
-        tickContainer.style.height = '100%'; // تأخذ 100% من مساحة الدائرة
-        tickContainer.style.left = `calc(50% - ${i % 5 === 0 ? '2px' : '1px'})`;
-        tickContainer.style.top = '0';
-        tickContainer.style.transform = `rotate(${i * 6}deg)`;
-        
-        // رسم الشرطة البيضاء في أعلى الحاوية (مما يجعلها تلتصق بالإطار الداخلي)
-        const tickMark = document.createElement('div');
-        tickMark.style.width = '100%';
-        tickMark.style.height = i % 5 === 0 ? '16px' : '8px';
-        tickMark.style.background = i % 5 === 0 ? '#fff' : 'rgba(255,255,255,0.5)';
-        tickMark.style.marginTop = '6px'; // مسافة صغيرة جداً لتبتعد عن الإطار الأزرق
-        tickMark.style.borderRadius = '2px';
+            // رسم الخطوط (الشرط البيضاء)
+            for (let i = 0; i < 60; i++) {
+                const tickContainer = document.createElement('div');
+                tickContainer.className = 'tv-tick-container';
+                tickContainer.style.position = 'absolute';
+                tickContainer.style.width = i % 5 === 0 ? '4px' : '2px';
+                tickContainer.style.height = '100%'; 
+                tickContainer.style.left = `calc(50% - ${i % 5 === 0 ? '2px' : '1px'})`;
+                tickContainer.style.top = '0';
+                tickContainer.style.transform = `rotate(${i * 6}deg)`;
 
-        tickContainer.appendChild(tickMark);
-        face.appendChild(tickContainer);
-    }
+                const tickMark = document.createElement('div');
+                tickMark.style.width = '100%';
+                tickMark.style.height = i % 5 === 0 ? '16px' : '8px';
+                tickMark.style.background = i % 5 === 0 ? '#fff' : 'rgba(255,255,255,0.5)';
+                tickMark.style.marginTop = '6px'; 
+                tickMark.style.borderRadius = '2px';
 
-    // رسم الأرقام
-    for (let i = 0; i < 12; i++) {
-        const num = document.createElement('div');
-        num.className = 'tv-clock-number';
-        num.innerText = arabicNumbers[i];
-        let angle = (i * 30) * (Math.PI / 180);
-        let radius = 38; // نسبة البعد عن المركز
-        let x = 50 + radius * Math.sin(angle);
-        let y = 50 - radius * Math.cos(angle);
-        num.style.left = `${x}%`;
-        num.style.top = `${y}%`;
-        face.appendChild(num);
-    }
-}
+                tickContainer.appendChild(tickMark);
+                face.appendChild(tickContainer);
+            }
+
+            // رسم الأرقام
+            for (let i = 0; i < 12; i++) {
+                const num = document.createElement('div');
+                num.className = 'tv-clock-number';
+                num.innerText = arabicNumbers[i];
+                let angle = (i * 30) * (Math.PI / 180);
+                let radius = 38; 
+                let x = 50 + radius * Math.sin(angle);
+                let y = 50 - radius * Math.cos(angle);
+                num.style.left = `${x}%`;
+                num.style.top = `${y}%`;
+                face.appendChild(num);
+            }
+        }
 
         setInterval(() => {
             if (document.getElementById('tv-mode-overlay').classList.contains('active')) {
@@ -1188,21 +1191,22 @@
 
         setInterval(() => {
             if (!document.getElementById('tv-mode-overlay').classList.contains('active')) return;
-            
+
             const now = new Date();
-            
+
             document.getElementById('tv-second-hand').style.transform = `rotate(${((now.getSeconds() / 60) * 360)}deg)`;
             document.getElementById('tv-minute-hand').style.transform = `rotate(${((now.getMinutes() / 60) * 360) + ((now.getSeconds()/60)*6)}deg)`;
             document.getElementById('tv-hour-hand').style.transform = `rotate(${((now.getHours() / 12) * 360) + ((now.getMinutes()/60)*30)}deg)`;
-            
-            const gregOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const gregDate = now.toLocaleDateString('en-US', gregOptions);
+
+            // ضبط التواريخ لمدينة بيرستورب السويد (Europe/Stockholm)
+            const timeZone = 'Europe/Stockholm';
+            const gregDate = now.toLocaleDateString('sv-SE', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: timeZone });
             let hijriDate = "";
             try {
-                hijriDate = new Intl.DateTimeFormat('en-US-u-ca-islamic', { day: 'numeric', month: 'long', year: 'numeric' }).format(now) + 'هـ';
+                hijriDate = new Intl.DateTimeFormat('ar-SA-u-ca-islamic', { day: 'numeric', month: 'long', year: 'numeric', timeZone: timeZone }).format(now);
             } catch(e) {}
-            document.getElementById('tv-date-display').innerText = `${gregDate} / ${hijriDate}`;
-            
+            document.getElementById('tv-date-display').innerText = `${gregDate} | ${hijriDate}`;
+
             const t = langData['ar'];
             let target = null; let title = "";
             for (let p of prayerTimes.filter(p => p.type !== 'no-prayer')) {
@@ -1222,9 +1226,9 @@
             let m = Math.floor((diff % 3600000) / 60000); 
             let s = Math.floor((diff % 60000) / 1000);
             let timeString = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-            
+
             document.getElementById('tv-countdown-text').innerText = `${title} - ${timeString}`;
-            
+
             renderTvPrayers(); 
         }, 1000);
 
