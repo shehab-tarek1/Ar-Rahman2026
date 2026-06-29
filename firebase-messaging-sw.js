@@ -19,13 +19,15 @@ messaging.setBackgroundMessageHandler(function(payload) {
     body: payload.notification?.body || 'لديك إشعار جديد',
     icon: 'https://res.cloudinary.com/db9h7zm1h/image/upload/w_500,q_auto,f_auto/v1774918203/hi5hebyjkpi3gkdgrdef.jpg',
     badge: 'https://res.cloudinary.com/db9h7zm1h/image/upload/w_500,q_auto,f_auto/v1774918203/hi5hebyjkpi3gkdgrdef.jpg',
-    vibrate:[200, 100, 200, 100, 200]
+    vibrate: [200, 100, 200, 100, 200]
   };
+
   return self.registration.showNotification(notificationTitle, notificationOptions);
 });
 
 const CACHE_NAME = 'arrahman-v1';
-const ASSETS =[
+
+const ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
@@ -34,25 +36,46 @@ const ASSETS =[
   'https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;800&display=swap'
 ];
 
+// ✅ FIX: عدم كسر الموقع لو ملف فشل
 self.addEventListener('install', (event) => {
   self.skipWaiting();
-  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
+
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(async (cache) => {
+      for (const asset of ASSETS) {
+        try {
+          await cache.add(asset);
+        } catch (err) {
+          console.warn('Cache failed for:', asset, err);
+        }
+      }
+    })
+  );
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.map(key => key !== CACHE_NAME ? caches.delete(key) : null))
+      Promise.all(
+        keys.map(key => key !== CACHE_NAME ? caches.delete(key) : null)
+      )
     ).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', (event) => {
-  // استثناء طلبات قاعدة البيانات والصور من الكاش لمنع اللاج وتثقيل الموقع
-  if (event.request.url.includes('firestore') || 
-      event.request.url.includes('google') || 
-      event.request.url.includes('cloudinary')) {
-      return;
+  const url = event.request.url;
+
+  // استثناء خدمات خارجية
+  if (
+    url.includes('firestore') ||
+    url.includes('google') ||
+    url.includes('cloudinary')
+  ) {
+    return;
   }
-  event.respondWith(caches.match(event.request).then(res => res || fetch(event.request)));
+
+  event.respondWith(
+    caches.match(event.request).then(res => res || fetch(event.request))
+  );
 });
